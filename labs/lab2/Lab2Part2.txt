@@ -1,0 +1,47 @@
+CREATE TABLE Park (
+       id                NOT NULL PRIMARY KEY,
+       entry_name        NOT NULL,
+       status	      	 NOT NULL,
+       protein_name      NOT NULL,
+       gene_name         NOT NULL,
+       organism          NOT NULL,
+       length		 NOT NULL
+);
+
+CREATE TABLE Apop (
+       id                NOT NULL PRIMARY KEY,
+       entry_name        NOT NULL,
+       status	      	 NOT NULL,
+       protein_name      NOT NULL,
+       gene_name         NOT NULL,
+       organism          NOT NULL,
+       length		 NOT NULL
+);
+
+CREATE TABLE Alzh (
+       id                NOT NULL PRIMARY KEY,
+       entry_name        NOT NULL,
+       status	      	 NOT NULL,
+       protein_name      NOT NULL,
+       gene_name         NOT NULL,
+       organism          NOT NULL,
+       length		 NOT NULL
+);
+
+.tables
+
+.seperator "\t";
+
+.import data/uniprot-alzheimer.tab Alzh;
+
+.import data/uniprot-apoptosis.tab Apop;
+
+.import data/uniprot-parkinson.tab Park;
+
+SELECT COUNT(id) FROM Alzh;
+
+SELECT COUNT(DISTINCT id) FROM Alzh;
+
+SELECT COUNT(organism) FROM Alzh WHERE organism == "Zea mays (Maize)";
+
+.save Lab2Part2.sqlite3
