@@ -1,0 +1,61 @@
+/*16 Sept 2016*/
+
+/*Creates a database concerning class, instructor and student information*/
+/*usage: cat setupDB.txt | sqlite3 campus.sqlite3*/
+
+drop table instructor;
+create table instructor (
+ID    char(5),
+name    varchar(20) not null,
+dept_name    varchar(20),
+salary    numeric(8,2),
+primary key (ID),
+foreign key (dept_name) references department);
+
+
+drop table student;
+create table student (
+ID    varchar(5),
+name    varchar(20) not null,
+dept_name    varchar(20),
+tot_cred     numeric(3,0),
+primary key (ID),
+foreign key (dept_name) references department) ;
+
+drop table course;
+create table course (
+course_id    varchar(8) primary key,
+title        varchar(50),
+dept_name    varchar(20),
+credits       numeric(2,0),
+foreign key (dept_name) references department);
+
+drop table department;
+create table department (
+course_id varchar(8) primary key,
+courseType varchar(8),
+dept_name varchar(8));
+
+INSERT INTO department VALUES ("101","Computer","compSci");
+INSERT INTO department VALUES ("101-a","Mathematics","Math");
+
+
+INSERT INTO instructor VALUES ("10101","Miller","CompSci", 90000.00);
+INSERT INTO instructor VALUES ("007", "Bonham-Carter", "Math-CompSci", 100000000);
+INSERT INTO instructor VALUES ("10102","Johnson","CompSci", 90000.00);
+INSERT INTO instructor VALUES ("10103","Charleson","CompSci", 70000.00);
+INSERT INTO instructor VALUES ("10104","Thompson","CompSci", 100000.00);
+
+INSERT INTO student VALUES ("S1","Michaels", "CompSci","3");	
+INSERT INTO student VALUES ("S2","Peterson", "CompSci","3");	
+INSERT INTO student VALUES ("S3","Mullen", "CompSci","4");	
+INSERT INTO student VALUES ("S4","Scotts", "CompSci","2");	
+INSERT INTO student VALUES ("S5","Beuller", "CompSci","1");	
+
+
+INSERT INTO course VALUES ("CS100","Computer Theory", "CompSci","3");	
+INSERT INTO course VALUES ("CS200","Graphics", "CompSci","3");	
+INSERT INTO course VALUES ("CS300","Web Design", "CompSci","3");	
+INSERT INTO course VALUES ("CS400","Software Design", "CompSci","3");	
+INSERT INTO course VALUES ("CS500","Databases", "CompSci","3");	
+INSERT INTO course VALUES ("CS600","Bioinformatics", "CompSci","3");

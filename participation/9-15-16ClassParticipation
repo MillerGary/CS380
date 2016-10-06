@@ -1,0 +1,22 @@
+SELECT name FROM instructor WHERE dept_name == "CompSci" AND salary < 80000;
+SELECT name FROM instructor WHERE dept_name == "Math-CompSci" AND salary > 70000;
+SELECT course_id, title, credits FROM course WHERE title == "Web Design";
+SELECT course_id, title, credits FROM course WHERE title == "Bioinformatics";
+SELECT dept_name FROM course;
+SELECT course_id, dept_name FROM course;
+SELECT course_id, dept_name FROM instructor;
+.schema instructor
+SELECT DISTINCT dept_name FROM instructor;
+SELECT dept_name FROM instructor;
+SELECT ALL dept_name FROM instructor;
+SELECT AVG(dept_name) FROM instructor;
+SELECT * FROM instructor;
+SELECT * FROM instructor WHERE salary == 90000;
+SELECT min(salary) from instructor;
+SELECT max(salary) from instructor;
+.schema instructor
+SELECT count(salary) from instructor;
+SELECT ID, count(salary) from instructor;
+SELECT count(salary) from instructor;
+SELECT ID from instructor;
+

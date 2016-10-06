@@ -1,0 +1,39 @@
+CREATE TABLE Writers (
+       id                INTEGER NOT NULL PRIMARY KEY,
+       first_name        VARCHAR(15) NOT NULL,
+       middle_name       VARCHAR(15),
+       last_name         VARCHAR(15) NOT NULL,
+       birth_date        VARCHAR(10) NOT NULL,
+       death_date        VARCHAR(10),
+       country_of_origin VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE OtherWriters (
+       id                INTEGER NOT NULL PRIMARY KEY,
+       first_name        VARCHAR(15) NOT NULL,
+       middle_name       VARCHAR(15),
+       last_name         VARCHAR(15) NOT NULL,
+       birth_date        VARCHAR(10) NOT NULL,
+       death_date        VARCHAR(10),
+       country_of_origin VARCHAR(20) NOT NULL
+);
+
+#Enter new data into the table
+INSERT into Writers VALUES(1, 'Ezra', 'Weston Loomis', 'Pound', '30/10/1885', '1/11/1972', 'USA');
+INSERT into Writers VALUES(2, 'Arthor', 'Conan', 'Doyle', '05/22/1859', '07/7/1930', 'UK');
+INSERT into Writers VALUES(3, 'Ernest', 'Miller', 'Hemingway', '07/21/1899', '07/02/1961', 'USA');
+INSERT into Writers VALUES(4, 'Edward', 'Montgomery', 'Wlliam III', '07/21/1860','07/02/1940', 'UK');
+
+#List out everything within the table
+SELECT * FROM Writers;
+
+#List out only a specific attribute of an entity
+SELECT first_name FROM Writers;
+#List out several specific attributes of an entity
+SELECT first_name, last_name,  birth_date FROM Writers;
+
+#Display all of the attributes of a specific entity (in this example ID == 3)
+DELETE FROM Writers WHERE ID = 3;
+
+#Delete a specific entity from the table
+DELETE FROM Writers WHERE ID = 4; 

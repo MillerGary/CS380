@@ -1,0 +1,23 @@
+CREATE TABLE Characters (
+	id INTEGER NOT NULL PRIMARY KEY,
+	name VARCHAR(15) NOT NULL,
+	attack VARCHAR(15) NOT NULL,
+	type VARCHAR(10) NOT NULL,
+	color VARCHAR(10) NOT NULL,
+	movement VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE Trainers (
+	name VARCHAR(15) NOT NULL,
+	class VARCHAR(15) NOT NULL,
+	character VARCHAR(15),
+	FOREIGN KEY(character) REFERENCES Characters(name)
+); 
+
+INSERT into Characters VALUES(1, 'Pyroar', 'Incinerate', 'fire', 'brown', 'flame charge');
+INSERT into Characters VALUES(2, 'Pikachu', 'Thunder Shock', 'Electirc', 'Yellow', 'Walk');
+INSERT into characters VALUES(3, 'Squirtle', 'Watergun', 'Water', 'Blue', 'Walk');
+
+.tables
+.schema
+SELECT * FROM Characters;
