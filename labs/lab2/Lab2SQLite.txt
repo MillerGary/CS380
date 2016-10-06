@@ -1,0 +1,64 @@
+
+CREATE TABLE Park (
+       id                NOT NULL PRIMARY KEY,
+       entry_name        NOT NULL,
+       status	      	 NOT NULL,
+       protein_name      NOT NULL,
+       gene_name         NOT NULL,
+       organism          NOT NULL,
+       length		 NOT NULL
+);
+
+CREATE TABLE Apop (
+       id                NOT NULL PRIMARY KEY,
+       entry_name        NOT NULL,
+       status	      	 NOT NULL,
+       protein_name      NOT NULL,
+       gene_name         NOT NULL,
+       organism          NOT NULL,
+       length		 NOT NULL
+);
+    
+
+.tables
+
+
+.schema
+
+.separator "\t"
+
+.import data/uniprot-apoptosis.tab Apop
+
+.import data/uniprot-parkinson.tab Park
+
+SELECT count(id) FROM Park;
+SELECT count(id) FROM Apop;
+
+
+SELECT count(DISTINCT id) FROM Park;
+SELECT count(DISTINCT id) FROM Apop;
+
+
+SELECT count(id) FROM Park WHERE organism == "Zea mays (Maize)";
+SELECT count(id) FROM Apop WHERE organism == "Zea mays (Maize)";
+
+
+SELECT count(DISTINCT organism) FROM Park;
+SELECT count(DISTINCT organism) FROM Apop;
+
+
+SELECT count(DISTINCT A.organism), count(DISTINCT P.organism) from Apop A, Park P where A.organism == P.organism;
+
+# Write a query that will return the number of proteins which are common to Apoptosis
+SELECT count(DISTINCT A.protein_name), count(DISTINCT P.protein_name) from Apop A, Park P where A.organism == "Zea mays (Maize)" AND  P.organism == "Zea mays (Maize)";
+
+
+SELECT A.protein_name, P.protein_name from Apop A, Park P where A.organism == "Zea mays (Maize)" AND  P.organism == "Zea mays (Maize)" LIMIT 15;
+
+
+SELECT COUNT(DISTINCT A.organism), COUNT(DISTINCT P.organism) FROM Apop A, Park P WHERE A.gene_name == P.gene_name;
+
+
+SELECT DISTINCT A.organism, P.organism FROM Apop A, Park P WHERE A.gene_name == P.gene_name LIMIT 15;
+
+

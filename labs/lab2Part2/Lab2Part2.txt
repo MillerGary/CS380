@@ -1,0 +1,61 @@
+CREATE TABLE Park (
+       id                NOT NULL PRIMARY KEY,
+       entry_name        NOT NULL,
+       status	      	 NOT NULL,
+       protein_name      NOT NULL,
+       gene_name         NOT NULL,
+       organism          NOT NULL,
+       length		 NOT NULL
+);
+
+CREATE TABLE Apop (
+       id                NOT NULL PRIMARY KEY,
+       entry_name        NOT NULL,
+       status	      	 NOT NULL,
+       protein_name      NOT NULL,
+       gene_name         NOT NULL,
+       organism          NOT NULL,
+       length		 NOT NULL
+);
+
+CREATE TABLE Alzh (
+       id                NOT NULL PRIMARY KEY,
+       entry_name        NOT NULL,
+       status	      	 NOT NULL,
+       protein_name      NOT NULL,
+       gene_name         NOT NULL,
+       organism          NOT NULL,
+       length		 NOT NULL
+);
+
+.tables
+
+.separator "\t";
+
+.import data/uniprot-alzheimer.tab Alzh;
+
+.import data/uniprot-apoptosis.tab Apop;
+
+.import data/uniprot-parkinson.tab Park;
+
+SELECT COUNT(id) FROM Alzh;
+
+SELECT COUNT(DISTINCT id) FROM Alzh;
+
+SELECT COUNT(organism) FROM Alzh WHERE organism == "Zea mays (Maize)";
+
+SELECT COUNT(Apop.organism) FROM Apop;
+		
+SELECT COUNT(Park.organism) FROM Park;
+
+SELECT COUNT(Alzh.organism) FROM Alzh;
+
+SELECT COUNT(Park.organism), COUNT(Alzh.organism) FROM Park, Alzh WHERE Park.organism == Alzh.organism;
+
+SELECT COUNT(Park.protein_name), COUNT(Apop.protein_name) FROM Park, Apop WHERE Park.organism == "Bothrops brazili" AND Apop.organism == "Bothrops brazili";
+
+SELECT COUNT(Alzh.gene_name), COUNT(Park.gene_name) FROM Alzh, Park WHERE Alzh.gene_name == Park.gene_name;
+
+SELECT Alzh.gene_name, Apop.gene_name FROM Alzh, Apop WHERE Alzh.gene_name == Apop.gene_name LIMIT 10;
+
+.save Lab2Part2.sqlite3
