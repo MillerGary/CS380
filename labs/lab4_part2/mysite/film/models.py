@@ -17,6 +17,9 @@ class Album(models.Model):
     #holds the film's genre type, max length 250 chars
     genre = models.CharField(max_length = 250)
 
+    #holds a url for a film logo
+    logo = models.CharField(max_length = 1000)
+
     # The following is a method of Album class
     def __str__(self):
         # show the film_title, main_actor, director_name
