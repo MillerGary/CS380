@@ -1,0 +1,57 @@
+
+DROP TABLE Team;
+
+CREATE TABLE Team (
+	ID		PRIMARY KEY NOT NULL,	
+	name 		VARCHAR(25),
+	year 		INTEGER NOT NULL,
+	wins 		INTEGER NOT NULL,
+	losses 		INTEGER NOT NULL,
+	avgH 		REAL NOT NULL,
+	pgH 		INTEGER NOT NULL,
+	pgN 		VARCHAR(75) NOT NULL,
+	sgH 		INTEGER NOT NULL,
+	sgN 		VARCHAR(75) NOT NULL,
+	sfH 		INTEGER NOT NULL,
+	sfN 		VARCHAR(75) NOT NULL,
+	pfH 		INTEGER NOT NULL,
+	pfN 		VARCHAR(75) NOT NULL,
+	cH 		INTEGER NOT NULL,
+	cN 		VARCHAR(75) NOT NULL,
+	playoff 	VARCHAR(4) NOT NULL
+);
+
+DROP TABLE Nba;
+
+CREATE TABLE Nba (
+	year 		VARCHAR(10) PRIMARY KEY,
+	west1 		VARCHAR(25) NOT NULL,
+	west2 		VARCHAR(25) NOT NULL, 
+	west3 		VARCHAR(25) NOT NULL,
+	west4 		VARCHAR(25) NOT NULL,
+	west5 		VARCHAR(25) NOT NULL,
+	west6 		VARCHAR(25) NOT NULL,
+	west7 		VARCHAR(25) NOT NULL,
+	west8 		VARCHAR(25) NOT NULL,
+	east1 		VARCHAR(25) NOT NULL,
+	east2 		VARCHAR(25) NOT NULL,
+	east3 		VARCHAR(25) NOT NULL,
+	east4 		VARCHAR(25) NOT NULL,
+	east5 		VARCHAR(25) NOT NULL,
+	east6 		VARCHAR(25) NOT NULL,
+	east7 		VARCHAR(25) NOT NULL,
+	east8 		VARCHAR(25) NOT NULL,
+	westChamp 	VARCHAR(25) NOT NULL,
+	eastChamp 	VARCHAR(25) NOT NULL,
+	nbaChamp 	VARCHAR(25) NOT NULL
+);
+
+.tables
+
+.schema
+
+.separator ","
+
+.import data/NBAHeight5Year.csv Team
+
+.import data/nbaSeasonData.csv Nba
